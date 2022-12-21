@@ -4,7 +4,9 @@
   include("../../utils/db.php");
   include("../../utils/functions.php");
 
-  $user_data = check_login($con);
+  $student_data = check_student_login($con);
+
+  $appointment_data = getStudentAppointment($con);
 
 // echo $_SESSION["user_id"];
 ?>
@@ -28,11 +30,11 @@
         <div class="nav-userInfo">
             <div class="userInfo">
                 <i class="fas fa-user userInfo_icon"></i>
-                <h4>Hi, <?php echo $user_data["firstname"]; ?></h4>
+                <h4>Hi, <?php echo $student_data["firstname"]; ?></h4>
             </div>
         </div>
         <div>
-            <a href="../../utils/logout.php">Logout</a>
+            <a class="logout" href="../../utils/logout.php">Logout</a>
         </div>
       </div>
     </nav>
@@ -42,7 +44,7 @@
                 <h1 class="profile-header">Profile</h1>
                 <div class="profile-img_container">
                     <?php
-                     $img_url = $user_data["userImage"];
+                     $img_url = $student_data["userImage"];
                     ?>
                     <img 
                     src="../../uploads/<?=$img_url?>"
@@ -51,26 +53,57 @@
                 </div>
                 <div class="student-details">
                     <div class="student-id">
-                        <span class="id-label">Student ID</span> <?php echo $user_data["student_id"]; ?>
+                        <span class="id-label">Student ID</span> <?php echo $student_data["student_id"]; ?>
                     </div>
                     <div class="student-name">
                         <span class="name-label">Student Name</span> 
                         <?php 
-                        $name = $user_data["firstname"] . " " . $user_data["lastname"]; 
+                        $name = $student_data["firstname"] . " " . $student_data["lastname"]; 
                         echo $name;
                         ?>
                     </div>
                     <div class="student-email">
-                        <span class="email-label">Student Email</span> <?php echo $user_data["email"]; ?>
+                        <span class="email-label">Student Email</span> <?php echo $student_data["email"]; ?>
                     </div>
                 </div>
+            </div>
+        </aside>
+        <aside class="mobile_sidebar hidden">
+            <i  class="fas fa-times close_btn"></i>
+            <div class="mobile-sidebar-list_container">
+                <div class="student-profile">
+                    <h1 class="profile-header">Profile</h1>
+                <div class="profile-img_container">
+                    <?php
+                     $img_url = $student_data["userImage"];
+                    ?>
+                    <img 
+                    src="../../uploads/<?=$img_url?>"
+                    alt="Student profile image">
+                    
+                </div>
+                <div class="student-details">
+                    <div class="student-id">
+                        <span class="id-label">Student ID</span> <?php echo $student_data["student_id"]; ?>
+                    </div>
+                    <div class="student-name">
+                        <span class="name-label">Student Name</span> 
+                        <?php 
+                        $name = $student_data["firstname"] . " " . $student_data["lastname"]; 
+                        echo $name;
+                        ?>
+                    </div>
+                    <div class="student-email">
+                        <span class="email-label">Student Email</span> <?php echo $student_data["email"]; ?>
+                    </div>
+                </div>
+            </div>
             </div>
         </aside>
         <section class="dashboard-main">
             <nav class="dashboard-main_nav">
                 <div class="main-nav_header">
-                    <!-- <i class="fas fa-arrow-left"></i> -->
-                    <i class="fas fa-bars dashboard-menu"></i>
+                    <i class="fas fa-bars dashboard_menu"></i>
                     <h4 class="page-header">Student Dashboard</h4>
                 </div>
                 <div class="main-nav_tools">
@@ -79,18 +112,55 @@
                 </div>
             </nav>
             <div class="dashboard-main_content">
-                <div class="container">
-                    <div class="row">
-                        <h1>Other content</h1>
+                <div class="book-link_container">
+                    <i class="fas fa-plus"></i>
+                    <a class="book-link" href="../../appointment/studentappointment/studentappointment.php">Book an appointment</a>
+                </div>
+                <div class="appointment">
+                    <div class="appointment-list">
+
+                        <?php if(isset($appointment_data)) { ?>
+                            <div class="card text-center">
+                            <div class="card-header">Appoinment</div>
+                            <?php
+                                $status = $appointment_data['appointmentStatus'];
+                                if($status == "Pending") {
+                                    $status = "primary";
+                                } elseif ($status == "Approved") {
+                                    $status = "success";
+                                } else {
+                                    $status = "danger";
+                                }
+                            ?>
+
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $appointment_data['studentID'] ?></h5>
+                                <p class="card-text"><?php echo $appointment_data['studentMessage'] ?></p>
+                                <a href="#" class="btn btn-<?=$status?>"><?php echo $appointment_data['appointmentStatus'] ?></a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Appointment Date:
+                                <?php echo $appointment_data['appointmentDate'] ?>
+                                <?php echo $appointment_data['appointmentTime'] ?>
+                            </div>
+                        </div>
+
+                        <?php 
+                        } else { 
+                        ?>
+                            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                <i class="fas fa-stop"></i>
+                                <div>
+                                    No Scheduled Appointments yet
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-
-
-
     <script src="../../js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="./studentdashboard.js"></script>
 </body>
 </html>

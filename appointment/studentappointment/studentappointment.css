@@ -1,5 +1,38 @@
+body {
+  font-family: "Roboto";
+}
 .appointment {
   display: flex;
+}
+.logout {
+  text-decoration: none;
+  color: red;
+}
+.logout:hover {
+  color: red;
+  font-weight: bold;
+}
+.dashboard_menu {
+  display: none;
+}
+.hidden {
+  display: none;
+}
+.mobile_sidebar {
+  position: fixed;
+  background-color: white;
+  width: 40vw;
+  z-index: 2;
+  height: 100vh;
+  font-size: 2rem;
+  top: 50px;
+}
+.close_btn {
+  display: flex;
+  justify-content: end;
+  color: red;
+  font-size: 2rem;
+  margin-right: 20px;
 }
 .userInfo {
   display: flex;
@@ -8,6 +41,42 @@
 .userInfo_icon {
   margin-right: 5px;
   font-size: 1.7em;
+}
+.dashboard-sidebar {
+  width: 25vw;
+  padding-left: 10px;
+}
+.profile-header {
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.student-profile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile-img_container {
+  text-align: center;
+  width: 15vw;
+}
+.profile-img_container img {
+  width: 100%;
+  border-radius: 50%;
+}
+.student-id,
+.student-name,
+.student-email {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  /* font-size: 1.3rem; */
+  font-weight: bold;
+}
+.id-label,
+.name-label,
+.email-label {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.4);
 }
 .appointment-sidebar {
   width: 20vw;
@@ -78,17 +147,28 @@
   height: 85vh;
 }
 .card-body {
+  position: relative;
+  top: 0;
   width: 70vw;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.appointment-menu {
+.dashboard_menu {
   display: none;
+}
+.alert {
+  display: inline;
+  position: absolute !important;
+  padding: 8px !important;
+  top: -20px;
+  /* left: 400px; */
+  background-color: rgba(255, 0, 0, 0.7) !important;
+  color: white !important;
 }
 @media screen and (max-width: 630px) {
   .appointment-sidebar {
     display: none;
   }
-  .appointment-menu {
+  .dashboard_menu {
     display: block;
   }
   .card-container {

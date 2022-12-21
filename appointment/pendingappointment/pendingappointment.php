@@ -7,9 +7,7 @@
   $supervisor_data = check_supervisor_login($con);
 
   $numPendingResult = getPendingAppointmentNum($con);
-  $numApprovedResult = getApprovedAppointmentNum($con);
-  $numCancelledResult = getCancelledAppointmentNum($con);
-
+  $pendingResult = getPendingAppointment($con);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../fontawesome-free-5.12.1-web/css/all.min.css"/>
-    <link rel="stylesheet" href="./supervisordashboard.css"/>
+    <link rel="stylesheet" href="./pendingappointment.css"/>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <title>Supervisor Dashboard</title>
 </head>
@@ -45,14 +43,14 @@
             <div class="sidebar-list_container">
                 <ul class="sidebar-list">
                     <li class="sidebar-list_item active">
-                        <a href="./supervisordashboard.php">
+                        <a href="../../dashboard/supervisordashboard/supervisordashboard.php">
                             <div>
                                 <i class="fas fa-chart-line"></i>Dashboard
                             </div>
                         </a>
                     </li>
                     <li class="sidebar-list_item">
-                        <a href="./supervisordashboard.php">
+                        <a href="../../dashboard/supervisordashboard/supervisordashboard.php">
                             <div>
                                 <i class="fas fa-calendar-check"></i>Appointment
                             </div>
@@ -151,7 +149,6 @@
         <section class="dashboard-main">
             <nav class="dashboard-main_nav">
                 <div class="main-nav_header">
-                    <!-- <i class="fas fa-arrow-left"></i> -->
                     <i class="fas fa-bars dashboard_menu"></i>
                     <h4 class="page-header">Supervisor Dashboard</h4>
                 </div>
@@ -161,41 +158,49 @@
                 </div>
             </nav>
             <div class="dashboard-main_content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?=$numPendingResult?></h5>
-                                    <p class="card-text">Pending Appointments</p>
-                                    <a href="../../appointment/pendingappointment/pendingappointment.php" class="btn btn-primary">View Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?=$numApprovedResult?></h5>
-                                    <p class="card-text">Approved Appointments</p>
-                                    <a href="../../appointment/approvedappointment/approvedappointment.php" class="btn btn-success">View Detail</a>
-                                </div>
-                            </div>
-                        </div>
+                <h2>Pending Appointments</h2>
+                <div class="table-container">
+                    <table class="table table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Student ID</th>
+                        <th>Appointment Date</th>
+                        <th>Appointment Time</th>
+                        <th>Student Message</th>
+                        <th>Approve</th>
+                        <th>Cancel</th>
+                    </tr>
+                    <?php 
+                        $sql = "SELECT * FROM Appointments WHERE appointmentStatus = 'Pending'";
+                        $res = mysqli_query($con, $sql);
 
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?=$numCancelledResult?></h5>
-                                    <p class="card-text">Cancelled Appointments</p>
-                                    <a href="../../appointment/cancelledappointment/cancelledappointment.php" class="btn btn-danger">View Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-content_info">
-                        <p>Supervisor Appointment Schedling</p>
-                    </div> 
+                        if(mysqli_num_rows($res) > 0) {
+                            while ($result = mysqli_fetch_assoc($res)) {
+                    ?>
+                        <tr>
+                            <td><?=$result['id']?></td>
+                            <td><?=$result['studentID']?></td>
+                            <td><?=$result['appointmentDate']?></td>
+                            <td><?=$result['appointmentTime']?></td>
+                            <td><?=$result['studentMessage']?></td>
+                            <td>
+                                <form action="../../utils/approveappointment.php" method="POST">
+                                    <input type="hidden" name="student_id" value="<?=$result['studentID']?>">
+                                    <button class="btn btn-success" type="submit">Approve</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="../../utils/cancelappointment.php" method="POST">
+                                    <input type="hidden" name="student_id" value="<?=$result['studentID']?>">
+                                    <button class="btn btn-danger" type="submit">Cancel</button>
+                                </form>
+                            </td>
+                            
+                        </tr>
+                    <?php } } ?>
+                </table>
                 </div>
+                
             </div>
         </section>
     </div>
@@ -204,6 +209,6 @@
     include_once("../../footer/footer.php");
     ?>
     <script src="../../js/bootstrap.bundle.min.js"></script>
-    <script src="./supervisordashboard.js"></script>
+    <script src="./pendingappointment.js"></script>
 </body>
 </html>

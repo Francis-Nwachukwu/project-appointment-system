@@ -17,13 +17,9 @@
 
 
     <section class="main-section">
-      
       <div class="card-container"> 
-        
         <div class="card student">
-          
           <div class="card-body">
-            
             <form action="../utils/auth.php" class="studentFormbox  studentRegister" method="POST" enctype="multipart/form-data">
               <h5>Sign up with your Student account</h5>
               <div class="card_form-detail">
@@ -103,6 +99,7 @@
               class="supervisorFormbox  supervisorRegister"
               action="../utils/auth.php"
               method="POST"
+              enctype="multipart/form-data"
             >
               <h5>Sign up with your Supervisor account</h5>
               <div class="card_form-detail">
@@ -124,6 +121,10 @@
               <div class="card_form-detail">
                 <label>Confirm password</label>
                 <input type="password" name="supervisorConfirmPassword" required />
+              </div>
+              <div class="card_form-detail">
+                <label>Upload Profile Picture</label>
+                <input type="file" name="supervisorImg" required />
               </div>
               <input type="hidden" name="supervisor-signing-up" value="true">
               <button class="registerBtn" type="submit">Register</button>

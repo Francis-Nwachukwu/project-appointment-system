@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../fontawesome-free-5.12.1-web/css/all.min.css"/>
     <title>Project Appointment Scheduling System</title>
-    <link rel="stylesheet" href="./home.css" />
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
 
@@ -209,6 +209,6 @@
     
 
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="./home.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

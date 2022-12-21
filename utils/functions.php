@@ -14,7 +14,7 @@ session_start();
             }
         } 
         // redirect to login page
-        header("Location: ../../home/home.php");
+        header("Location: ../../index/index.php");
         die;
     }
     function check_supervisor_login($con) {
@@ -29,7 +29,7 @@ session_start();
             } 
         } 
         // redirect to login page
-        header("Location: ../../home/home.php");
+        header("Location: ../../index/index.php");
         die;
     }
 

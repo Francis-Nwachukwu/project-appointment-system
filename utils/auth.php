@@ -23,7 +23,7 @@
 
         if($password !== $confirmpassword) {
           $error_msg = "passwords=mismatch";
-          header("Location: ../home/home.php?$error_msg");
+          header("Location: ../index/index.php?$error_msg");
           exit();
         }
 
@@ -31,7 +31,7 @@
         $queryResult = mysqli_query($con, $checkExistingEmail);
         if($queryResult && mysqli_num_rows($queryResult) > 0) {
           $error_msg = "email=exists";
-          header("Location: ../home/home.php?$error_msg");
+          header("Location: ../index/index.php?$error_msg");
           exit();
         }
 
@@ -47,12 +47,12 @@
                 // exit();
               } else {
                 $error_msg = "type=unknown";
-                header("Location: ../home/home.php?$error_msg");
+                header("Location: ../index/index.php?$error_msg");
                 exit();
                }
           } else {
               $error_msg = "imageupload=unknownerror";
-              header("Location: ../home/home.php?$error_msg");
+              header("Location: ../index/index.php?$error_msg");
               exit();
           }
 
@@ -68,7 +68,7 @@
 
             } else {
                 $error_msg = "error=wronginput";
-                header("Location: ../home/home.php?$error_msg");
+                header("Location: ../index/index.php?$error_msg");
                 exit();
             }
 
@@ -93,12 +93,12 @@
                         // die;
                     } else {
                         $error_msg = "error=incorrect";
-                        header("Location: ../home/home.php?$error_msg");
+                        header("Location: ../index/index.php?$error_msg");
                         exit();
                     }
                 } else {
                   $error_msg = "error=incorrect";
-                  header("Location: ../home/home.php?$error_msg");
+                  header("Location: ../index/index.php?$error_msg");
                   exit();
                 }
             }
@@ -118,7 +118,7 @@
 
         if($password !== $confirmpassword) {
           $error_msg = "passwords=mismatch";
-          header("Location: ../home/home.php?$error_msg");
+          header("Location: ../index/index.php?$error_msg");
           exit();
         }
 
@@ -126,7 +126,7 @@
         $queryResult = mysqli_query($con, $checkExistingEmail);
         if($queryResult && mysqli_num_rows($queryResult) > 0) {
           $error_msg = "email=exists";
-          header("Location: ../home/home.php?$error_msg");
+          header("Location: ../index/index.php?$error_msg");
           exit();
         }
 
@@ -142,12 +142,12 @@
                 // exit();
               } else {
                 $error_msg = "type=unknown";
-                header("Location: ../home/home.php?$error_msg");
+                header("Location: ../index/index.php?$error_msg");
                 exit();
                }
           } else {
               $error_msg = "imageupload=unknownerror";
-              header("Location: ../home/home.php?$error_msg");
+              header("Location: ../index/index.php?$error_msg");
               exit();
           }
 
@@ -163,7 +163,7 @@
 
         } else {
             $error_msg = "error=wronginput";
-            header("Location: ../home/home.php?$error_msg");
+            header("Location: ../index/index.php?$error_msg");
             exit();
         }
 
@@ -188,12 +188,12 @@
                         // die;
                     } else {
                         $error_msg = "error=incorrect";
-                        header("Location: ../home/home.php?$error_msg");
+                        header("Location: ../index/index.php?$error_msg");
                         exit();
                     }
                 } else {
                   $error_msg = "error=incorrect";
-                  header("Location: ../home/home.php?$error_msg");
+                  header("Location: ../index/index.php?$error_msg");
                   exit();
                 }
             }

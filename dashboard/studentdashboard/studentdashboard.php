@@ -26,7 +26,7 @@
 <body>
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <a href="../../home/home.php" class="navbar-brand">Appointment Scheduling</a>
+        <a href="../../index/index.php" class="navbar-brand">Appointment Scheduling</a>
         <div class="nav-userInfo">
             <div class="userInfo">
                 <i class="fas fa-user userInfo_icon"></i>

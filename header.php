@@ -7,7 +7,7 @@ include_once("../navbar.php");
 <head>
 	<title>
 		Appointing Management System
-        <link rel="stylesheet" href="./home.css">
+        <link rel="stylesheet" href="./index.css">
 	</title>
 </head>
 

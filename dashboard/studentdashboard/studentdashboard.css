@@ -1,0 +1,103 @@
+body {
+  font-family: "Roboto";
+}
+.dashboard {
+  display: flex;
+}
+.userInfo {
+  display: flex;
+  justify-content: start;
+}
+.userInfo_icon {
+  margin-right: 5px;
+  font-size: 1.7em;
+}
+.dashboard-sidebar {
+  width: 25vw;
+  padding-left: 10px;
+}
+.profile-header {
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.student-profile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile-img_container {
+  text-align: center;
+  width: 15vw;
+}
+.profile-img_container img {
+  width: 100%;
+  border-radius: 50%;
+}
+.student-id,
+.student-name,
+.student-email {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  /* font-size: 1.3rem; */
+  font-weight: bold;
+}
+.id-label,
+.name-label,
+.email-label {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+.dashboard-main {
+  width: 75vw;
+  height: 93vh;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.dashboard-main_nav {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  height: 3rem;
+  padding: 0 10px;
+  justify-content: space-between;
+}
+.main-nav_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-nav_tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fa-arrow-left {
+  font-size: 1.4rem;
+}
+.fa-bars,
+.fa-bell {
+  padding: 0 10px;
+}
+.dashboard-main_content,
+.card {
+  margin-top: 10px;
+}
+.main-content_info {
+  font-size: 0.8rem;
+}
+.dashboard-menu {
+  display: none;
+}
+
+@media screen and (max-width: 630px) {
+  .dashboard-sidebar {
+    display: none;
+  }
+  .dashboard-menu {
+    display: block;
+    margin: 0 10px;
+  }
+  .dashboard-main {
+    width: 100%;
+  }
+}

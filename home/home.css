@@ -1,20 +1,25 @@
 .main-section {
   margin-top: 100px;
 }
-
+.card_form-detail:nth-child(5) {
+  margin-top: 10px;
+}
 .card-container {
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
+
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
 }
-@media screen and (max-width: 750px) {
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .card {
-    margin: 10px 5px !important;
-  }
+.form-msg_container {
+  display: flex;
+  justify-content: end;
+}
+.form-msg {
+  font-size: 12px;
 }
 .studentFormbox,
 .supervisorFormbox {
@@ -34,4 +39,23 @@
   margin-bottom: 5px;
   display: flex;
   flex-direction: column;
+}
+.alert {
+  display: inline;
+  position: absolute !important;
+  padding: 8px !important;
+  top: -20px;
+  /* left: 400px; */
+  background-color: rgba(255, 0, 0, 0.7) !important;
+  color: white !important;
+}
+@media screen and (max-width: 750px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    margin: 10px 5px !important;
+  }
 }

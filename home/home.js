@@ -1,6 +1,5 @@
 document.querySelectorAll(".toggleBtn").forEach((e) => {
   e.addEventListener("click", () => {
-    console.log(e);
     const target = e.dataset.target;
 
     if (target.includes("student")) {

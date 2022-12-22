@@ -12,6 +12,16 @@ body {
   color: red;
   font-weight: bold;
 }
+.navbar-brand {
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-left: 2px solid black;
+}
+.navbar-brand-2 {
+  text-decoration: underline;
+}
 .dashboard_menu {
   display: none;
 }
@@ -24,7 +34,7 @@ body {
   width: 40vw;
   z-index: 2;
   height: 100vh;
-  font-size: 2rem;
+  font-size: 1.3rem;
   top: 50px;
 }
 .close_btn {
@@ -45,6 +55,10 @@ body {
 .dashboard-sidebar {
   width: 25vw;
   padding-left: 10px;
+}
+.profile-header_container {
+  display: flex;
+  justify-content: space-between;
 }
 .profile-header {
   background-color: rgba(0, 0, 0, 0.1);

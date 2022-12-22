@@ -12,6 +12,16 @@ body {
 .dashboard {
   display: flex;
 }
+.navbar-brand {
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-left: 2px solid black;
+}
+.navbar-brand-2 {
+  text-decoration: underline;
+}
 .userInfo {
   display: flex;
   justify-content: start;

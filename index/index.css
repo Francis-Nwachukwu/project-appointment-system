@@ -1,8 +1,20 @@
 .main-section {
   margin-top: 100px;
+  min-height: 62vh;
 }
 .card_form-detail:nth-child(5) {
   margin-top: 10px;
+}
+.nav-link_student,
+.nav-link_supervisor {
+  text-decoration: none;
+  margin: 0 5px;
+  color: black;
+}
+.nav-link_student:hover,
+.nav-link_supervisor:hover {
+  font-weight: bold;
+  color: black;
 }
 .card-container {
   display: flex;
@@ -20,6 +32,16 @@
 }
 .form-msg {
   font-size: 12px;
+}
+.navbar-brand {
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-left: 2px solid black;
+}
+.navbar-brand-2 {
+  text-decoration: underline;
 }
 .studentFormbox,
 .supervisorFormbox {
@@ -57,5 +79,10 @@
   }
   .card {
     margin: 10px 5px !important;
+  }
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

@@ -24,7 +24,7 @@
 <body>
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <a href="../../index/index.php" class="navbar-brand">Appointment Scheduling</a>
+        <a href="../../index/index.php" class="navbar-brand"><span class="navbar-brand-2">Book</span>ie</a>
         <div class="nav-userInfo">
             <div class="userInfo">
                 <i class="fas fa-user userInfo_icon"></i>
@@ -66,35 +66,37 @@
             </div>
         </aside>
         <aside class="mobile_sidebar hidden">
-            <i  class="fas fa-times close_btn"></i>
             <div class="mobile-sidebar-list_container">
                 <div class="student-profile">
-                    <h1 class="profile-header">Profile</h1>
-                <div class="profile-img_container">
-                    <?php
-                     $img_url = $student_data["userImage"];
-                    ?>
-                    <img 
-                    src="../../uploads/<?=$img_url?>"
-                    alt="Student profile image">
-                    
-                </div>
-                <div class="student-details">
-                    <div class="student-id">
-                        <span class="id-label">Student ID</span> <?php echo $student_data["student_id"]; ?>
+                    <div class="profile-header_container">
+                        <h1 class="profile-header">Profile</h1>
+                        <i  class="fas fa-times close_btn"></i>
                     </div>
-                    <div class="student-name">
-                        <span class="name-label">Student Name</span> 
-                        <?php 
-                        $name = $student_data["firstname"] . " " . $student_data["lastname"]; 
-                        echo $name;
+                    <div class="profile-img_container">
+                        <?php
+                        $img_url = $student_data["userImage"];
                         ?>
+                        <img 
+                        src="../../uploads/<?=$img_url?>"
+                        alt="Student profile image">
+                        
                     </div>
-                    <div class="student-email">
-                        <span class="email-label">Student Email</span> <?php echo $student_data["email"]; ?>
+                    <div class="student-details">
+                        <div class="student-id">
+                            <span class="id-label">Student ID</span> <?php echo $student_data["student_id"]; ?>
+                        </div>
+                        <div class="student-name">
+                            <span class="name-label">Student Name</span> 
+                            <?php 
+                            $name = $student_data["firstname"] . " " . $student_data["lastname"]; 
+                            echo $name;
+                            ?>
+                        </div>
+                        <div class="student-email">
+                            <span class="email-label">Student Email</span> <?php echo $student_data["email"]; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </aside>
          <section class="main-section">

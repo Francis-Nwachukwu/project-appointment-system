@@ -11,10 +11,15 @@
   </head>
   <body>
 
-    <?php
-      include_once("../includes/main-navbar.php");
-    ?>
-
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a href="./index.php" class="navbar-brand"><span class="navbar-brand-2">Book</span>ie</a>
+        <div>
+          <a href="../dashboard/studentdashboard/studentdashboard.php" class="nav-link_student">Student Dashboard</a>
+        <a href="../dashboard/supervisordashboard/supervisordashboard.php" class="nav-link_supervisor">Supervisor Dashboard</a>
+        </div>
+      </div>
+    </nav>
 
     <section class="main-section">
       <div class="card-container"> 
@@ -206,6 +211,13 @@
       
     <!-- <div class='alert'>email or password</div> -->
     </section>
+
+
+    <footer>
+      <?php
+        include("../footer/footer.php");
+      ?>
+    </footer>
     
 
     <script src="../js/bootstrap.bundle.min.js"></script>

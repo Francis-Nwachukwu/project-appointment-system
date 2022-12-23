@@ -6,7 +6,7 @@
 
   $student_data = check_student_login($con);
 
-// echo $_SESSION["user_id"];
+  $supervisor_data = getSupervisor($con, 532949802);
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
     </nav>
 
     <div class="appointment">
-        <aside class="appointment-sidebar">
+        <aside class="dashboard-sidebar">
             <div class="sidebar-list_container">
                 <ul class="sidebar-list">
                     <li class="sidebar-list_item">
@@ -63,15 +63,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-        </aside>
-        <aside class="mobile_sidebar hidden">
-            <div class="mobile-sidebar-list_container">
                 <div class="student-profile">
-                    <div class="profile-header_container">
-                        <h1 class="profile-header">Profile</h1>
-                        <i  class="fas fa-times close_btn"></i>
-                    </div>
                     <div class="profile-img_container">
                         <?php
                         $img_url = $student_data["userImage"];
@@ -96,6 +88,64 @@
                             <span class="email-label">Student Email</span> <?php echo $student_data["email"]; ?>
                         </div>
                     </div>
+                    
+                </div>
+            </div>
+        </aside>
+        <aside class="mobile_sidebar hidden">
+            <div class="mobile-sidebar-list_container">
+                <div class="sidebar-list_container">
+                <ul class="sidebar-list">
+                    <i  class="fas fa-times close_btn"></i>
+                    <li class="sidebar-list_item">
+                        <a href="../../dashboard/studentdashboard/studentdashboard.php">
+                            <div>
+                                <i class="fas fa-chart-line"></i>Dashboard
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar-list_item active">
+                        <a href="./studentappointment.php">
+                            <div>
+                                <i class="fas fa-calendar-check"></i>Appointment
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidebar-list_item">
+                        <a href="./studentappointment.php">
+                            <div>
+                                <i class="fas fa-search"></i>Search
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+                <div class="student-profile">
+                    <div class="profile-img_container">
+                        <?php
+                        $img_url = $student_data["userImage"];
+                        ?>
+                        <img 
+                        src="../../uploads/<?=$img_url?>"
+                        alt="Student profile image">
+                        
+                    </div>
+                    <div class="student-details">
+                        <div class="student-id">
+                            <span class="id-label">Student ID</span> <?php echo $student_data["student_id"]; ?>
+                        </div>
+                        <div class="student-name">
+                            <span class="name-label">Student Name</span> 
+                            <?php 
+                            $name = $student_data["firstname"] . " " . $student_data["lastname"]; 
+                            echo $name;
+                            ?>
+                        </div>
+                        <div class="student-email">
+                            <span class="email-label">Student Email</span> <?php echo $student_data["email"]; ?>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </aside>
@@ -112,6 +162,30 @@
             </nav>
             
             <div class="card-container">
+                <div class="appointment-card_footer">
+                    <!-- Supervisor details -->
+                    <div class="supervisor-details">
+                        <span class="supervisor-details_label">Supervisor Email</span> <?php echo $supervisor_data["email"]; ?>
+                    </div>
+                    <div class="supervisor-details">
+                        <span class="supervisor-details_label">Available Days</span> <?php echo $supervisor_data["available_days"]; ?>
+                    </div>
+                    <div class="supervisor-details">
+                        <span class="supervisor-details_label">Available Time</span>
+                        <div class="supervisor-details">
+                            <?php
+                            $available_start_time = substr($supervisor_data["available_start_time"], 0 , 5);
+                            $available_end_time = substr($supervisor_data["available_end_time"], 0 , 5);
+                            ?>
+                            <p>
+                                <?=$available_start_time?> - <?=$available_end_time?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="supervisor-details">
+                        <span class="supervisor-details_label">Maximum number of Allowed Students</span> <?php echo $supervisor_data["maximum_students"]; ?>
+                    </div>
+                </div>
                 <div class="card">  
                     <div class="card-body">
                         <form class="book-appointment" method="POST" action="../../utils/appointment.php">
@@ -141,8 +215,8 @@
                         exit();
                     } 
                 ?> 
-                    </div>
-                   
+                    </div> 
+                    
                 </div>
                 
             </div>

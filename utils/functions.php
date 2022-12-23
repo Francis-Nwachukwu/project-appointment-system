@@ -32,6 +32,24 @@ session_start();
         header("Location: ../../index/index.php");
         die;
     }
+    function getSupervisor($con, $id) {
+        $querySupervisor = "SELECT * FROM SUPERVISORS WHERE supervisor_id = '$id' limit 1";
+
+        $supervisorResult = mysqli_query($con, $querySupervisor);
+        if($supervisorResult && mysqli_num_rows($supervisorResult) > 0) {
+            $supervisor_data = mysqli_fetch_assoc($supervisorResult);
+            return $supervisor_data;
+        } 
+    }
+    function getStudent($con, $id) {
+        $queryStudent = "SELECT * FROM Students WHERE student_id = '$id' limit 1";
+
+        $studentResult = mysqli_query($con, $queryStudent);
+        if($studentResult && mysqli_num_rows($studentResult) > 0) {
+            $studentData = mysqli_fetch_assoc($studentResult);
+            return $studentData;
+        } 
+    }
 
     function getStudentAppointment($con) {
         $student_data = check_student_login($con);
@@ -44,6 +62,22 @@ session_start();
             $appointment_data = mysqli_fetch_assoc($appointmentResult);
             return $appointment_data;
         } 
+    }
+    function getAllAppointment($con) {
+        $allAppointmentQuery = "SELECT * FROM Appointments";
+
+        $allResult = mysqli_query($con, $allAppointmentQuery);
+        if($allResult && mysqli_num_rows($allResult) > 0) {
+            $allAppointment_data = mysqli_fetch_assoc($allResult);
+            return $allAppointment_data;
+        }
+    }
+    function getAllAppointmentNum($con) {
+        $allAppointmentQuery = "SELECT * FROM Appointments";
+
+        $allResult = mysqli_query($con, $allAppointmentQuery);
+        $count = mysqli_num_rows($allResult);
+        return $count;
     }
     function getPendingAppointment($con) {
         $pendingAppointmentQuery = "SELECT * FROM Appointments where appointmentStatus = 'Pending'";

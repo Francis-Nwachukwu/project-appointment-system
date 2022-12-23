@@ -108,9 +108,61 @@
                     <i class="fas fa-bars dashboard_menu"></i>
                     <h4 class="page-header">Student Dashboard</h4>
                 </div>
-                <div class="main-nav_tools">
+                <!-- Modal trigger button -->
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#availableModal">
                     <i class="fas fa-bell"></i>
-                    
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="availableModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="appointment">
+                    <div class="appointment-list">
+
+                        <?php if(isset($appointment_data)) { ?>
+                            <div class="card text-center">
+                            <div class="card-header">Message from supervisor</div>
+                            <!-- <?php
+                                $status = $appointment_data['appointmentStatus'];
+                                if($status == "Pending") {
+                                    $status = "primary";
+                                } elseif ($status == "Approved") {
+                                    $status = "success";
+                                } else {
+                                    $status = "danger";
+                                }
+                            ?> -->
+
+                            <div class="card-body">
+                                <i class="fas fa-bell"></i>
+                                <p class="card-text"><em><?=$student_data['supervisor_message']?></em></p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Appointment Date:
+                                <?php echo $appointment_data['appointmentDate'] ?>
+                                <?php echo $appointment_data['appointmentTime'] ?>
+                            </div>
+                        </div>
+
+                        <?php 
+                        } else { 
+                        ?>
+                            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                <i class="fas fa-stop"></i>
+                                <div>
+                                    No message from supervisor yet.
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+                </div>
                 </div>
             </nav>
             <div class="dashboard-main_content">
@@ -136,8 +188,8 @@
                             ?>
 
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $appointment_data['studentID'] ?></h5>
-                                <p class="card-text"><?php echo $appointment_data['studentMessage'] ?></p>
+                                <h5 class="card-title"><span class="card-body_label">Student ID: </span><?php echo $appointment_data['studentID'] ?></h5>
+                                <p class="card-text"><span class="card-body_label">Student message: </span><?php echo $appointment_data['studentMessage'] ?></p>
                                 <button type="disabled" href="#" class="btn btn-<?=$status?>"><?php echo $appointment_data['appointmentStatus'] ?></button>
                             </div>
                             <div class="card-footer text-muted">
@@ -155,6 +207,48 @@
                                 <div>
                                     No Scheduled Appointments yet
                                 </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="appointment">
+                    <div class="appointment-list">
+
+                        <?php if(isset($student_data['supervisor_data'])) { ?>
+                            <div class="card text-center">
+                                <div class="card-header">Message from supervisor</div>
+
+                                <div class="card-body">
+                                    <i class="fas fa-bell"></i>
+                                    <p class="card-text"><em><?=$student_data['supervisor_message']?></em></p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    Appointment Date:
+                                    <?php echo $appointment_data['appointmentDate'] ?>
+                                    <?php echo $appointment_data['appointmentTime'] ?>
+                                </div>
+                            </div>
+
+                        <?php 
+                        } else { 
+                        ?>
+                            <div class="card text-center">
+                                <div class="card-header">Message from supervisor</div>
+
+                                <div class="card-body">
+                                    <i class="fas fa-bell"></i>
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <i class="fas fa-stop"></i>
+                                        <div>
+                                            No message from supervisor yet.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="card-footer text-muted">
+                                    Appointment Date:
+                                    <?php echo $appointment_data['appointmentDate'] ?>
+                                    <?php echo $appointment_data['appointmentTime'] ?>
+                                </div> -->
                             </div>
                         <?php } ?>
                     </div>

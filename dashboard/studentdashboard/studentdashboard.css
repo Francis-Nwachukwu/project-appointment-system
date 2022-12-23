@@ -36,6 +36,7 @@ body {
   height: 100vh;
   font-size: 1.3rem;
   top: 50px;
+  overflow-y: auto;
 }
 .close_btn {
   display: flex;
@@ -56,6 +57,10 @@ body {
   width: 25vw;
   padding-left: 10px;
   font-size: 1.3rem;
+  overflow-y: auto;
+}
+.modal {
+  color: black;
 }
 .profile-header_container {
   display: flex;
@@ -126,6 +131,9 @@ body {
 }
 .fa-arrow-left {
   font-size: 1.4rem;
+}
+.card-body_label {
+  font-weight: bold;
 }
 .fa-bars,
 .fa-bell {

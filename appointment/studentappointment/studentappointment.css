@@ -36,6 +36,7 @@ body {
   height: 100vh;
   font-size: 1.3rem;
   top: 50px;
+  overflow-y: auto;
 }
 .close_btn {
   display: flex;
@@ -55,6 +56,8 @@ body {
 .dashboard-sidebar {
   width: 25vw;
   padding-left: 10px;
+  height: calc(100vh - 62px);
+  overflow-y: auto;
 }
 .profile-header_container {
   display: flex;
@@ -92,11 +95,6 @@ body {
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.4);
 }
-.appointment-sidebar {
-  width: 20vw;
-  padding-left: 10px;
-}
-
 .sidebar-list {
   list-style: none;
   padding: 0;
@@ -154,17 +152,34 @@ body {
 }
 .card-container {
   display: flex;
-  justify-content: center;
-  padding-top: 50px;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* padding-top: 50px; */
   width: 80vw;
   background-color: rgba(0, 0, 0, 0.1);
-  height: 85vh;
+  height: calc(100vh - 62px);
 }
 .card-body {
   position: relative;
   top: 0;
   width: 70vw;
   background-color: rgba(0, 0, 0, 0.1);
+}
+.appointment-card_footer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.supervisor-details {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  /* font-size: 1.3rem; */
+  font-weight: bold;
+}
+.supervisor-details_label {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.4);
 }
 .dashboard_menu {
   display: none;
@@ -179,7 +194,7 @@ body {
   color: white !important;
 }
 @media screen and (max-width: 630px) {
-  .appointment-sidebar {
+  .dashboard-sidebar {
     display: none;
   }
   .dashboard_menu {

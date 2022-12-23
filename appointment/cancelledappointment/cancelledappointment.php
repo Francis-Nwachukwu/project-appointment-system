@@ -90,6 +90,22 @@
                     <div class="student-email">
                         <span class="email-label">Supervisor Email</span> <?php echo $supervisor_data["email"]; ?>
                     </div>
+                    <div class="student-email">
+                        <span class="email-label">Available Days</span> <?php echo $supervisor_data["available_days"]; ?>
+                    </div>
+                    <div class="student-email">
+                        <span class="email-label">Available Time</span>
+                        <?php
+                        $available_start_time = substr($supervisor_data["available_start_time"], 0 , 5);
+                        $available_end_time = substr($supervisor_data["available_end_time"], 0 , 5);
+                        ?>
+                        <p>
+                            <?=$available_start_time?> - <?=$available_end_time?>
+                        </p>
+                    </div>
+                    <div class="student-email">
+                        <span class="email-label">Maximum number of Allowed Students</span> <?php echo $supervisor_data["maximum_students"]; ?>
+                    </div>
                 </div>
             </div>
             </div>
@@ -144,6 +160,22 @@
                     <div class="student-email">
                         <span class="email-label">Supervisor Email</span> <?php echo $supervisor_data["email"]; ?>
                     </div>
+                    <div class="student-email">
+                        <span class="email-label">Available Days</span> <?php echo $supervisor_data["available_days"]; ?>
+                    </div>
+                    <div class="student-email">
+                        <span class="email-label">Available Time</span>
+                        <?php
+                        $available_start_time = substr($supervisor_data["available_start_time"], 0 , 5);
+                        $available_end_time = substr($supervisor_data["available_end_time"], 0 , 5);
+                        ?>
+                        <p>
+                            <?=$available_start_time?> - <?=$available_end_time?>
+                        </p>
+                    </div>
+                    <div class="student-email">
+                        <span class="email-label">Maximum number of Allowed Students</span> <?php echo $supervisor_data["maximum_students"]; ?>
+                    </div>
                 </div>
             </div>
             </div>
@@ -156,9 +188,53 @@
                     <h4 class="page-header">Supervisor Dashboard</h4>
                 </div>
                 <div class="main-nav_tools">
-                    <i class="fas fa-bell"></i>
-                    
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#availableModal">
+                        <i class="fas fa-bell"></i>
+                    </button> 
                 </div>
+                <!-- Modal -->
+                    <div class="modal fade" id="availableModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Set available time and maximum number of allowed students per day</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" method="POST" class="available-form">
+                                        <div class="available-form_detail">
+                                            <label for="available_days">Choose available days <br>
+                                                (<em>HINT: Use ctrl + click to select multiple days</em>)</label>
+                                            <select id="available_days" name="available_days" size="6" multiple>
+                                                <option value="Monday">Monday</option>
+                                                <option value="Tuesday">Tuesday</option>
+                                                <option value="Wednesday">Wednesday</option>
+                                                <option value="Thursday">Thursday</option>
+                                                <option value="Friday">Friday</option>
+                                                <option value="Saturday">Saturday</option>
+                                            </select>
+                                        </div>
+                                        <div class="available-form_detail">
+                                            <label>Available start time</label>
+                                            <input type="time" name="available_start_time" required/>
+                                        </div>
+                                        <div class="available-form_detail">
+                                            <label>Available end time</label>
+                                            <input type="time" name="available_end_time" required/>
+                                        </div>
+                                        <div class="available-form_detail">
+                                            <label>Maximum number of allowed students per day</label>
+                                            <input type="number" name="maximum_students" required/>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </nav>
             <div class="dashboard-main_content">
                 <h2>Cancelled Appointments</h2>

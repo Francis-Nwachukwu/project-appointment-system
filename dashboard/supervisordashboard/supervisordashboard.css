@@ -32,7 +32,9 @@ body {
 }
 .dashboard-sidebar {
   width: 25vw;
+  height: calc(100vh - 62px);
   padding-left: 10px;
+  overflow-y: auto;
 }
 
 .sidebar-list {
@@ -46,6 +48,7 @@ body {
 .fas {
   margin-right: 7px;
 }
+
 .sidebar-list_item.active {
   background-color: rgba(0, 0, 0, 0.2);
   border-left: 2px solid black;
@@ -66,6 +69,7 @@ body {
   z-index: 2;
   width: 40vw;
   height: 100vh;
+  overflow-y: auto;
   top: 50px;
 }
 .close_btn {
@@ -97,6 +101,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.modal {
+  color: black;
+}
+.available-form_detail {
+  display: flex;
+  flex-direction: column;
 }
 .fa-arrow-left {
   font-size: 1.4rem;

@@ -1,6 +1,17 @@
 body {
   font-family: "Roboto";
 }
+.alert-success {
+  /* position: absolute;
+  top: 10%;
+  left: 60%; */
+}
+.fa-check-circle {
+  margin-right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .logout {
   text-decoration: none;
   color: red;
